@@ -1,0 +1,12 @@
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+crash.*.log
+
+.terraform/providers/registry.terraform.io/hashicorp/aws/*/terraform-provider-aws_v*_x*

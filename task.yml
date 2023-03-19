@@ -1,0 +1,34 @@
+--- 
+- hosts: web-servers
+  become: yes 
+  tasks:
+  - name: Update apt package cache
+    apt:
+      update_cache: yes
+      state: latest
+
+  - name: Install Java
+    apt:
+      name: openjdk-8-jdk
+      state: present
+
+  - name: Add Jenkins repository
+    apt_repository:
+      repo: "deb https://pkg.jenkins.io/debian binary/"
+      state: present
+
+  - name: Import Jenkins GPG Key
+    apt_key:
+        url: "https://pkg.jenkins.io/debian/jenkins.io.key"
+        state: present
+
+  - name: Install Jenkins
+    apt:
+      name: jenkins
+      state: present
+
+  - name: Start Jenkins Service
+    service:
+      name: jenkins
+      state: started
+
